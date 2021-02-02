@@ -1,0 +1,32 @@
+﻿<Window x:Class="WPF_Examples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Examples"
+        mc:Ignorable="d"
+        Title="Преобразователь"  Height="128" MinHeight="128" Width="386" MinWidth="386">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="Введите число" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+        <Label Content="Десятичное" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="1"/>
+        <Label Content="Шестнадцатеричное" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="26" Width="133" Grid.Row="2"/>
+        <TextBox Name="DecTextBox" PreviewMouseDown="TextBox_PreviewMouseDown" Grid.Column="1" HorizontalAlignment="Center"  Height="23"  Grid.Row="1" TextWrapping="Wrap" Text="Введите число" VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="HexTextBox" PreviewMouseDown="TextBox_PreviewMouseDown" Grid.Column="1" HorizontalAlignment="Center" Height="23"  Grid.Row="2" TextWrapping="Wrap" Text="Введите число" VerticalAlignment="Center" Width="120"/>
+        <TextBlock Name="ResultDecToHex" Text="Результат"  Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBlock Name="ResultHexToDec" Text="Результат" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
+        <Button Click="Button_Click" IsDefault="True" Content="Посчитать" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75"/>
+
+
+    </Grid>
+</Window>
