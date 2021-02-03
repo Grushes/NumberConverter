@@ -27,22 +27,30 @@ namespace WPF_Examples
             
 
         }
-
+        Converter conv = new Converter();
+        public static void ShowMSG(string mes)
+        {
+            MessageBox.Show(mes);
+        }
+       
         private void TextBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBox tb = sender as TextBox;
             tb.Text = "";
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(DecTextBox.Text != "Введите число")
             {
+                
                 ResultDecToHex.Text = Converter.DecToHex(DecTextBox.Text);
             }
             if(HexTextBox.Text != "Введите число")
             {
-                ResultHexToDec.Text = Converter.HexToDec(HexTextBox.Text).ToString();
+                conv.RegisterWarningHandler(new Converter.WarningHandler(ShowMSG));
+                ResultHexToDec.Text = conv.HexToDec(HexTextBox.Text).ToString();
             }
 
         }

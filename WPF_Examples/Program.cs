@@ -10,9 +10,15 @@ namespace WPF_Examples
 
      class Converter
     {
-     
-    
-       public static int HexToDec(string hexNum)
+
+        public delegate void WarningHandler(string message);
+        WarningHandler _warning;
+
+        public void RegisterWarningHandler(WarningHandler del)
+        {
+            _warning = del;
+        }
+        public int HexToDec(string hexNum)
         {
             hexNum = hexNum.Trim();
             hexNum = hexNum.ToUpper();
@@ -20,7 +26,9 @@ namespace WPF_Examples
             {
                 if (!"0123456789ABCDEF".Contains(ch))
                 {
-                    Console.WriteLine("Такого числа не существует - " + hexNum);
+                    //Console.WriteLine("Такого числа не существует - " + hexNum);
+                    if(_warning!= null)
+                        _warning("Такого числа не существует - " + hexNum);
                     return 0;
                 }
             }
@@ -58,6 +66,7 @@ namespace WPF_Examples
                 }
                 result += temp * (int)Math.Pow(16, hexNum.Length - i - 1);
             }
+            
             return result;
         }
         public static string DecToHex(string decString)
